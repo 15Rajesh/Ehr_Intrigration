@@ -33,7 +33,6 @@ public class GlobalExceptionHandler {
 
         return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
     }
-
     // Handle Generic Exception
 //    @ExceptionHandler(Exception.class)
 //    public ResponseEntity<?> handleGeneral(Exception ex) {
@@ -54,6 +53,7 @@ public class GlobalExceptionHandler {
 
         Map<String, Object> error = new HashMap<>();
         error.put("message", ex.getMessage());
+
         error.put("status", 500);
 
         return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
