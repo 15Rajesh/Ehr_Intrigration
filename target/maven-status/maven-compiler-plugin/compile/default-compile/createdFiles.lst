@@ -1,8 +1,10 @@
 com\ehr_integration_platform\security\service\CustomUserDetailsService.class
+com\ehr_integration_platform\entity\Main.class
 com\ehr_integration_platform\repository\PatientRepository.class
 com\ehr_integration_platform\dto\PatientDTO.class
 com\ehr_integration_platform\mapper\PatientMapper.class
 com\ehr_integration_platform\common\ApiResponse.class
+com\ehr_integration_platform\config\SwaggerConfig.class
 com\ehr_integration_platform\service\Test.class
 com\ehr_integration_platform\entity\User.class
 com\ehr_integration_platform\exception\ResourceNotFoundException.class
