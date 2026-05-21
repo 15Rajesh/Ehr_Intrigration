@@ -2,9 +2,13 @@ C:\Users\lenovo\Downloads\ehr-integration-platform\src\main\java\com\ehr_integra
 C:\Users\lenovo\Downloads\ehr-integration-platform\src\main\java\com\ehr_integration_platform\config\SwaggerConfig.java
 C:\Users\lenovo\Downloads\ehr-integration-platform\src\main\java\com\ehr_integration_platform\controller\PatientController.java
 C:\Users\lenovo\Downloads\ehr-integration-platform\src\main\java\com\ehr_integration_platform\dto\PatientDTO.java
+C:\Users\lenovo\Downloads\ehr-integration-platform\src\main\java\com\ehr_integration_platform\dto\RegisterRequest.java
+C:\Users\lenovo\Downloads\ehr-integration-platform\src\main\java\com\ehr_integration_platform\dto\SendOtpRequest.java
+C:\Users\lenovo\Downloads\ehr-integration-platform\src\main\java\com\ehr_integration_platform\dto\VerifyOtpRequest.java
 C:\Users\lenovo\Downloads\ehr-integration-platform\src\main\java\com\ehr_integration_platform\EhrIntegrationPlatformApplication.java
 C:\Users\lenovo\Downloads\ehr-integration-platform\src\main\java\com\ehr_integration_platform\entity\Main.java
 C:\Users\lenovo\Downloads\ehr-integration-platform\src\main\java\com\ehr_integration_platform\entity\Patient.java
+C:\Users\lenovo\Downloads\ehr-integration-platform\src\main\java\com\ehr_integration_platform\entity\Role.java
 C:\Users\lenovo\Downloads\ehr-integration-platform\src\main\java\com\ehr_integration_platform\entity\User.java
 C:\Users\lenovo\Downloads\ehr-integration-platform\src\main\java\com\ehr_integration_platform\exception\GlobalExceptionHandler.java
 C:\Users\lenovo\Downloads\ehr-integration-platform\src\main\java\com\ehr_integration_platform\exception\ResourceNotFoundException.java
