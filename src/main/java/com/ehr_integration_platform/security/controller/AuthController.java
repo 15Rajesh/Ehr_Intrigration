@@ -1,5 +1,6 @@
 package com.ehr_integration_platform.security.controller;
 
+import com.ehr_integration_platform.dto.ResetPasswordRequest;
 import com.ehr_integration_platform.dto.SendOtpRequest;
 import com.ehr_integration_platform.dto.VerifyOtpRequest;
 import com.ehr_integration_platform.entity.Role;
@@ -130,5 +131,40 @@ public class AuthController {
 
         // generate JWT token
         return jwtUtil.generateToken(user.getUsername());
+    }
+
+       // Reset Password
+    @PostMapping("/reset-password")
+    public String resetPassword(
+            @RequestBody ResetPasswordRequest request
+    ) {
+
+        User user = userRepository
+                .findByMobileNumber(request.getMobileNumber())
+                .orElseThrow(() ->
+                        new RuntimeException("User not found"));
+
+        // OTP validation
+        if (!user.getOtp().equals(request.getOtp())) {
+            throw new RuntimeException("Invalid OTP");
+        }
+
+        // Expiry validation
+        if (user.getOtpExpiry().isBefore(LocalDateTime.now())) {
+            throw new RuntimeException("OTP expired");
+        }
+
+        // Update password
+        user.setPassword(
+                passwordEncoder.encode(request.getNewPassword())
+        );
+
+        // Clear OTP
+        user.setOtp(null);
+        user.setOtpExpiry(null);
+
+        userRepository.save(user);
+
+        return "Password reset successful";
     }
 }

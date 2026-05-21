@@ -13,6 +13,7 @@ com\ehr_integration_platform\repository\UserRepository.class
 com\ehr_integration_platform\controller\PatientController.class
 com\ehr_integration_platform\EhrIntegrationPlatformApplication.class
 com\ehr_integration_platform\dto\VerifyOtpRequest.class
+com\ehr_integration_platform\dto\ResetPasswordRequest.class
 com\ehr_integration_platform\mapper\PatientMapper.class
 com\ehr_integration_platform\common\ApiResponse.class
 com\ehr_integration_platform\dto\RegisterRequest.class
