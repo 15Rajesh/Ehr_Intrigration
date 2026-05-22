@@ -68,13 +68,21 @@ public class AuthController {
     public String login(@RequestBody User request) {
 
         authManager.authenticate(
+
                 new UsernamePasswordAuthenticationToken(
                         request.getUsername(),
                         request.getPassword()
                 )
         );
 
-        return jwtUtil.generateToken(request.getUsername());
+        User user = userRepository
+                .findByUsername(request.getUsername())
+                .orElseThrow();
+
+        return jwtUtil.generateToken(
+                user.getUsername(),
+                user.getRole()
+        );
     }
      // Send OTP
     @PostMapping("/send-otp")
@@ -130,7 +138,10 @@ public class AuthController {
         userRepository.save(user);
 
         // generate JWT token
-        return jwtUtil.generateToken(user.getUsername());
+        return jwtUtil.generateToken(
+                user.getUsername(),
+                user.getRole()
+        );
     }
 
        // Reset Password
