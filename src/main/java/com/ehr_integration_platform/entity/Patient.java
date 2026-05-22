@@ -6,7 +6,7 @@ import lombok.Data;
 @Entity
 @Table(name = "patients")
 @Data
-public class Patient {
+public class Patient extends AuditEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
