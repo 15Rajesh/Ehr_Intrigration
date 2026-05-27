@@ -5,6 +5,7 @@ import com.ehr_integration_platform.dto.PatientDTO;
 import com.ehr_integration_platform.service.PatientService;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.Authentication;
 import org.springframework.data.domain.Page;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -189,6 +190,24 @@ public class PatientController {
         return new ApiResponse<>(
                 "Deleted Successfully",
                 null
+        );
+    }
+
+    // CURRENT LOGGED-IN PATIENT DETAILS
+    @PreAuthorize("hasRole('PATIENT')")
+    @GetMapping("/me")
+    public ApiResponse<PatientDTO> getCurrentPatient(
+            Authentication authentication
+    ) {
+
+        String mobileNumber = authentication.getName();
+
+        PatientDTO patient =
+                service.getCurrentPatient(mobileNumber);
+
+        return new ApiResponse<>(
+                "Patient profile fetched successfully",
+                patient
         );
     }
 }

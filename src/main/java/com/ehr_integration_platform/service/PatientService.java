@@ -1,5 +1,5 @@
 package com.ehr_integration_platform.service;
-
+import com.ehr_integration_platform.mapper.PatientMapper;
 import com.ehr_integration_platform.dto.PatientDTO;
 import com.ehr_integration_platform.entity.Patient;
 import com.ehr_integration_platform.exception.ResourceNotFoundException;
@@ -17,10 +17,16 @@ import java.util.Optional;
 @Service
 public class PatientService {
 
+    private final PatientMapper mapper;
+
     private final PatientRepository repository;
 
-    public PatientService(PatientRepository repository) {
+    public PatientService(
+            PatientRepository repository,
+            PatientMapper mapper
+    ) {
         this.repository = repository;
+        this.mapper = mapper;
     }
 
     // CREATE + UPDATE
@@ -99,6 +105,17 @@ public class PatientService {
                 .stream()
                 .map(PatientMapper::toDTO)
                 .toList();
+    }
+
+    public PatientDTO getCurrentPatient(String mobileNumber) {
+
+        Patient patient = repository
+                .findByMobileNumber(mobileNumber)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("Patient not found")
+                );
+
+        return mapper.toDTO(patient);
     }
 
     // PATCH (Partial Update)
