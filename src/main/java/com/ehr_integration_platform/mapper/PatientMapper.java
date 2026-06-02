@@ -2,7 +2,9 @@ package com.ehr_integration_platform.mapper;
 
 import com.ehr_integration_platform.dto.PatientDTO;
 import com.ehr_integration_platform.entity.Patient;
+import org.springframework.stereotype.Component;
 
+@Component
 public class PatientMapper {
 
     // DTO → Entity

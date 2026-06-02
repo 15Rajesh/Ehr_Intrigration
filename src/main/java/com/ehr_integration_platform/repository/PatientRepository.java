@@ -1,6 +1,8 @@
 package com.ehr_integration_platform.repository;
 
 import com.ehr_integration_platform.entity.Patient;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
@@ -10,6 +12,8 @@ import java.util.Optional;
 public interface PatientRepository extends JpaRepository<Patient, Long>,  JpaSpecificationExecutor<Patient>{
 
     Optional<Patient> findByMobileNumber(String mobileNumber);
+
+    Page<Patient> findByDeletedFalse(Pageable pageable);
 
     List<Patient> findByNameContainingIgnoreCase(String name);
 

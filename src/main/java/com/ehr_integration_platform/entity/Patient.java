@@ -3,10 +3,12 @@ package com.ehr_integration_platform.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "patients")
 @Data
-public class Patient {
+public class Patient extends AuditEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,6 +18,8 @@ public class Patient {
     private Integer age;
     private String disease;
     private String gender;
+    private boolean deleted = false;
+    private LocalDateTime deletedAt;
 
     @Column(unique = true, nullable = false)
     private String mobileNumber;
