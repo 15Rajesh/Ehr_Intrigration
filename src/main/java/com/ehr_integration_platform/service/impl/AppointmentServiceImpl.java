@@ -5,6 +5,7 @@ import com.ehr_integration_platform.entity.Appointment;
 import com.ehr_integration_platform.entity.AppointmentStatus;
 import com.ehr_integration_platform.entity.Doctor;
 import com.ehr_integration_platform.entity.Patient;
+import com.ehr_integration_platform.exception.AppointmentConflictException;
 import com.ehr_integration_platform.exception.ResourceNotFoundException;
 import com.ehr_integration_platform.mapper.AppointmentMapper;
 import com.ehr_integration_platform.repository.AppointmentRepository;
@@ -80,7 +81,7 @@ public class AppointmentServiceImpl
 
         if (exists) {
 
-            throw new RuntimeException(
+            throw new AppointmentConflictException(
                     "Doctor already has appointment at this time"
             );
         }

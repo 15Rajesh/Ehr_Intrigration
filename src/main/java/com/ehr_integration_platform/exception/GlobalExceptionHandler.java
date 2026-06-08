@@ -21,6 +21,22 @@ public class GlobalExceptionHandler {
 
         return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
     }
+      // Handle AppointmentConflictException
+    @ExceptionHandler(AppointmentConflictException.class)
+    public ResponseEntity<?> handleAppointmentConflict(
+            AppointmentConflictException ex) {
+
+        Map<String, Object> error = new HashMap<>();
+
+        error.put("timestamp", LocalDateTime.now());
+        error.put("message", ex.getMessage());
+        error.put("status", HttpStatus.CONFLICT.value());
+
+        return new ResponseEntity<>(
+                error,
+                HttpStatus.CONFLICT
+        );
+    }
 
     // Handle Validation
     @ExceptionHandler(org.springframework.web.bind.MethodArgumentNotValidException.class)
